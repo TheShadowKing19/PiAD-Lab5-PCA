@@ -81,3 +81,11 @@ plt.ylabel('składowa 2')
 plt.colorbar()
 plt.show()
 
+"""Krzywa kowariancji sposobem Kuby"""
+"""Obliczamy wartości i wektory własne macierzy kowariancji, by obliczyć krzywą kowariancji"""
+egn_values, egn_vectors = np.linalg.eig(mat_kow_digits)
+total_egn_values = np.sum(egn_values)
+var_exp = [(i / total_egn_values) for i in sorted(egn_values, reverse=True)]
+cum_var_exp = np.cumsum(var_exp)
+plt.plot(range(0, len(cum_var_exp)), cum_var_exp)
+plt.show()
